@@ -593,9 +593,26 @@
     background: white;
     border: 0.5px solid var(--border-light);
     border-radius: 8px; padding: 1.5rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    cursor: default;
   }
 
-  .bring-icon { font-size: 20px; margin-bottom: 10px; display: block; }
+  .bring-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 28px rgba(184,150,106,0.18), 0 2px 8px rgba(0,0,0,0.06);
+    border-color: #b8966a;
+  }
+
+  .bring-card:hover .bring-icon {
+    transform: scale(1.2);
+    transition: transform 0.2s ease;
+  }
+
+  .bring-card:hover .bring-name {
+    color: #b8966a;
+  }
+
+  .bring-icon { font-size: 20px; margin-bottom: 10px; display: block; transition: transform 0.2s ease; }
   .bring-name { font-size: 14px; font-weight: 500; color: #1a1814; margin-bottom: 6px; }
   .bring-desc { font-size: 12px; color: #777; line-height: 1.65; }
 
@@ -609,12 +626,25 @@
     background: white;
     border: 0.5px solid var(--border-light);
     border-radius: 8px; padding: 1.5rem;
-    transition: border-color 0.2s;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
   }
 
-  .project-card:hover { border-color: #ccc; }
+  .project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 28px rgba(184,150,106,0.18), 0 2px 8px rgba(0,0,0,0.06);
+    border-color: #b8966a;
+  }
 
-  .project-icon { font-size: 22px; margin-bottom: 10px; display: block; }
+  .project-card:hover .project-icon {
+    transform: scale(1.2);
+    transition: transform 0.2s ease;
+  }
+
+  .project-card:hover .project-name {
+    color: #b8966a;
+  }
+
+  .project-icon { font-size: 22px; margin-bottom: 10px; display: block; transition: transform 0.2s ease; }
   .project-name { font-size: 14px; font-weight: 500; color: #1a1814; margin-bottom: 6px; }
   .project-desc { font-size: 12px; color: #777; line-height: 1.6; margin-bottom: 10px; }
   .project-link {

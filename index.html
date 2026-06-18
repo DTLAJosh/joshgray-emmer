@@ -7,3 +7,795 @@
 <title>Josh Gray-Emmer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --terra: #c4603a;
+    --terra-light: #d4795a;
+    --terra-dim: rgba(196,96,58,0.12);
+    --sand: #f5efe6;
+    --sand-dark: #ede4d6;
+    --sand-darker: #ddd0be;
+    --sage: #7a9e7e;
+    --sage-light: #a8c4aa;
+    --sage-dim: rgba(122,158,126,0.12);
+    --warm-white: #faf6f0;
+    --text-dark: #2c2418;
+    --text-mid: #6b5c4a;
+    --text-light: #9a8a78;
+    --border: rgba(44,36,24,0.1);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--warm-white);
+    color: var(--text-dark);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--sand);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2.5rem; height: 62px;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px; font-weight: 700;
+    color: var(--text-dark); text-decoration: none;
+    letter-spacing: -0.3px;
+  }
+  .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+  .nav-links a {
+    font-size: 12px; font-weight: 500;
+    color: var(--text-mid); text-decoration: none;
+    letter-spacing: 0.07em; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--terra); }
+  .nav-cta {
+    background: var(--terra) !important;
+    color: white !important;
+    padding: 8px 18px; border-radius: 20px;
+    font-weight: 500 !important;
+  }
+  .nav-cta:hover { opacity: 0.88; }
+
+  /* ── HERO ── */
+  .hero {
+    display: grid; grid-template-columns: 1fr 1fr;
+    min-height: 90vh;
+    background: var(--sand);
+  }
+  .hero-left {
+    padding: 5rem 3.5rem 4rem;
+    display: flex; flex-direction: column; justify-content: center;
+    gap: 1.75rem;
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--terra-dim); color: var(--terra);
+    padding: 6px 14px; border-radius: 20px;
+    font-size: 12px; font-weight: 500; letter-spacing: 0.06em;
+    width: fit-content;
+  }
+  .hero-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(38px, 4.5vw, 58px);
+    font-weight: 900; line-height: 1.05;
+    color: var(--text-dark);
+  }
+  .hero-headline em { font-style: italic; color: var(--terra); }
+  .hero-intro {
+    font-size: 17px; font-weight: 300; line-height: 1.8;
+    color: var(--text-mid); max-width: 420px;
+  }
+  .hero-intro strong { font-weight: 500; color: var(--text-dark); }
+  .hero-links { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--terra); color: white;
+    padding: 12px 26px; border-radius: 25px;
+    font-size: 13px; font-weight: 500; letter-spacing: 0.04em;
+    text-decoration: none; border: none; cursor: pointer;
+    transition: opacity 0.2s, transform 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+  .btn-secondary {
+    background: transparent; color: var(--terra);
+    padding: 12px 26px; border-radius: 25px;
+    font-size: 13px; font-weight: 500; letter-spacing: 0.04em;
+    text-decoration: none; border: 1.5px solid var(--terra);
+    cursor: pointer; transition: all 0.2s; display: inline-block;
+  }
+  .btn-secondary:hover { background: var(--terra-dim); transform: translateY(-1px); }
+
+  .hero-right {
+    position: relative; overflow: hidden;
+    background: var(--sand-dark);
+  }
+  .hero-right img {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center top;
+  }
+  .hero-photo-placeholder {
+    width: 100%; height: 100%; min-height: 500px;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 10px;
+    color: var(--text-light); font-size: 13px; letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* ── QUICK FACTS STRIP ── */
+  .facts-strip {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    background: var(--terra);
+  }
+  .fact {
+    padding: 1.75rem 1.5rem;
+    border-right: 1px solid rgba(255,255,255,0.15);
+    text-align: center;
+  }
+  .fact:last-child { border-right: none; }
+  .fact-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px; font-weight: 700; color: white;
+    line-height: 1; margin-bottom: 4px;
+  }
+  .fact-lbl { font-size: 11px; color: rgba(255,255,255,0.75); text-transform: uppercase; letter-spacing: 0.08em; }
+
+  /* ── SECTIONS ── */
+  .section { padding: 5rem 2.5rem; }
+  .section-alt { background: var(--sand); }
+  .section-sage { background: var(--sage-dim); }
+
+  .section-label {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--terra);
+    margin-bottom: 8px; display: block;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 3vw, 40px); font-weight: 700;
+    color: var(--text-dark); line-height: 1.15; margin-bottom: 1rem;
+  }
+  .section-title em { font-style: italic; color: var(--terra); }
+  .section-body {
+    font-size: 16px; color: var(--text-mid);
+    line-height: 1.8; max-width: 620px;
+  }
+
+  /* ── ABOUT ── */
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: center;
+  }
+  .about-photo-slot {
+    border-radius: 12px; overflow: hidden;
+    aspect-ratio: 4/5;
+    background: var(--sand-dark);
+    position: relative;
+  }
+  .about-photo-slot img { width: 100%; height: 100%; object-fit: cover; }
+  .about-photo-placeholder {
+    width: 100%; height: 100%; display: flex;
+    align-items: center; justify-content: center;
+    flex-direction: column; gap: 8px;
+    color: var(--text-light); font-size: 12px;
+    text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  .about-text { display: flex; flex-direction: column; gap: 1.25rem; }
+  .about-text p { font-size: 16px; color: var(--text-mid); line-height: 1.85; }
+  .about-text p strong { color: var(--text-dark); font-weight: 500; }
+  .about-text p em { color: var(--terra); font-style: normal; font-weight: 500; }
+
+  /* ── DINNER CLUB ── */
+  .dc-hero {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 0; min-height: 500px;
+  }
+  .dc-text {
+    padding: 4rem 3rem;
+    display: flex; flex-direction: column;
+    justify-content: center; gap: 1.5rem;
+  }
+  .dc-photo-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr; gap: 6px;
+  }
+  .dc-photo {
+    background: var(--sand-darker);
+    position: relative; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .dc-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .dc-photo-placeholder {
+    font-size: 10px; color: var(--text-light);
+    text-transform: uppercase; letter-spacing: 0.08em;
+    text-align: center; padding: 1rem;
+  }
+  .dc-stats {
+    display: grid; grid-template-columns: repeat(3,1fr);
+    gap: 12px; margin-top: 1rem;
+  }
+  .dc-stat {
+    background: var(--terra-dim);
+    border-radius: 10px; padding: 1rem;
+    text-align: center;
+  }
+  .dc-stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px; font-weight: 700;
+    color: var(--terra); line-height: 1;
+  }
+  .dc-stat-lbl {
+    font-size: 10px; color: var(--text-mid);
+    text-transform: uppercase; letter-spacing: 0.06em;
+    margin-top: 4px;
+  }
+
+  /* ── MAPS ── */
+  .maps-intro {
+    display: grid; grid-template-columns: 1.2fr 0.8fr;
+    gap: 4rem; align-items: start; margin-bottom: 2.5rem;
+  }
+  .map-collection-grid {
+    display: grid; grid-template-columns: repeat(3,1fr);
+    gap: 12px; margin-top: 2rem;
+  }
+  .map-item {
+    border-radius: 8px; overflow: hidden;
+    aspect-ratio: 3/4;
+    background: var(--sand-dark);
+    position: relative;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+  }
+  .map-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(44,36,24,0.12);
+  }
+  .map-item img { width: 100%; height: 100%; object-fit: cover; }
+  .map-item-placeholder {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 6px;
+    font-size: 10px; color: var(--text-light);
+    text-transform: uppercase; letter-spacing: 0.08em;
+    text-align: center; padding: 1rem;
+  }
+  .map-caption {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(transparent, rgba(44,36,24,0.7));
+    color: white; padding: 1rem 0.75rem 0.75rem;
+    font-size: 11px; font-weight: 500;
+  }
+
+  /* ── TRAVEL MAP ── */
+  #travel-map {
+    height: 420px; border-radius: 12px;
+    overflow: hidden; border: 1px solid var(--border);
+    margin-top: 2rem;
+  }
+
+  /* ── ADVENTURES ── */
+  .adventures-grid {
+    display: grid; grid-template-columns: repeat(3,1fr);
+    gap: 16px;
+  }
+  .adventure-card {
+    border-radius: 12px; overflow: hidden;
+    position: relative;
+    aspect-ratio: 4/5;
+    background: var(--sand-dark);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+  }
+  .adventure-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(44,36,24,0.15);
+  }
+  .adventure-card img { width: 100%; height: 100%; object-fit: cover; }
+  .adventure-photo-placeholder {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 8px;
+    font-size: 11px; color: var(--text-light);
+    text-transform: uppercase; letter-spacing: 0.08em;
+    text-align: center; padding: 1.5rem;
+  }
+  .adventure-overlay {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(transparent, rgba(44,36,24,0.75));
+    padding: 2rem 1.25rem 1.25rem;
+  }
+  .adventure-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px; font-weight: 700; color: white;
+    margin-bottom: 4px;
+  }
+  .adventure-desc { font-size: 12px; color: rgba(255,255,255,0.8); line-height: 1.4; }
+
+  /* ── WORK ── */
+  .work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .work-card {
+    background: white; border-radius: 12px;
+    border: 1px solid var(--border); padding: 1.75rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+  .work-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 28px rgba(196,96,58,0.12);
+    border-color: var(--terra);
+  }
+  .work-icon { font-size: 28px; margin-bottom: 12px; display: block; }
+  .work-title { font-size: 16px; font-weight: 500; color: var(--text-dark); margin-bottom: 6px; }
+  .work-desc { font-size: 13px; color: var(--text-mid); line-height: 1.65; margin-bottom: 12px; }
+  .work-link {
+    font-size: 12px; font-weight: 500; color: var(--terra);
+    text-decoration: none; letter-spacing: 0.04em;
+  }
+  .work-link:hover { text-decoration: underline; }
+
+  /* ── QUOTES ── */
+  .quotes-strip {
+    display: grid; grid-template-columns: repeat(3,1fr);
+    gap: 16px;
+  }
+  .quote-card {
+    background: white; border-radius: 12px;
+    border: 1px solid var(--border); padding: 1.75rem;
+    display: flex; flex-direction: column; gap: 1rem;
+  }
+  .quote-mark {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px; color: var(--terra); line-height: 0.5;
+    margin-bottom: 8px; display: block;
+  }
+  .quote-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px; font-style: italic;
+    color: var(--text-dark); line-height: 1.7; flex: 1;
+  }
+  .quote-attr { padding-top: 12px; border-top: 1px solid var(--border); }
+  .quote-name { font-size: 13px; font-weight: 500; color: var(--text-dark); }
+  .quote-role { font-size: 12px; color: var(--text-light); line-height: 1.4; }
+
+  /* ── CONTACT ── */
+  .contact-section {
+    background: var(--sand);
+    padding: 5rem 2.5rem;
+    text-align: center;
+  }
+  .contact-section .section-title { margin: 0 auto 1rem; }
+  .contact-section .section-body { margin: 0 auto 2rem; text-align: center; }
+  .contact-links { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .contact-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 24px; border-radius: 25px;
+    font-size: 13px; font-weight: 500; text-decoration: none;
+    transition: all 0.2s;
+  }
+  .contact-btn-primary { background: var(--terra); color: white; }
+  .contact-btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+  .contact-btn-secondary { background: white; color: var(--text-dark); border: 1px solid var(--border); }
+  .contact-btn-secondary:hover { border-color: var(--terra); color: var(--terra); transform: translateY(-1px); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--text-dark); padding: 2rem 2.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .footer-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px; font-weight: 700; color: var(--sand);
+  }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a {
+    font-size: 12px; color: rgba(245,239,230,0.5);
+    text-decoration: none; text-transform: uppercase;
+    letter-spacing: 0.07em; transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--sand); }
+
+  /* ── DIVIDER ── */
+  .divider { height: 1px; background: var(--border); margin: 0; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 0 1.25rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { min-height: 300px; }
+    .hero-left { padding: 3rem 1.5rem; }
+    .facts-strip { grid-template-columns: 1fr 1fr; }
+    .about-grid, .dc-hero, .maps-intro { grid-template-columns: 1fr; }
+    .work-grid, .quotes-strip { grid-template-columns: 1fr; }
+    .adventures-grid { grid-template-columns: 1fr 1fr; }
+    .map-collection-grid { grid-template-columns: 1fr 1fr; }
+    .section { padding: 3rem 1.5rem; }
+    .dc-text { padding: 2.5rem 1.5rem; }
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-tag { animation: fadeUp 0.5s 0.1s ease both; }
+  .hero-headline { animation: fadeUp 0.6s 0.2s ease both; }
+  .hero-intro { animation: fadeUp 0.6s 0.3s ease both; }
+  .hero-links { animation: fadeUp 0.6s 0.4s ease both; }
+
+  /* Leaflet custom markers */
+  .custom-marker {
+    background: var(--terra);
+    border: 2px solid white;
+    border-radius: 50%;
+    width: 12px; height: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="#" class="nav-logo">Josh Gray-Emmer</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#dinner-club">Dinner Club</a></li>
+    <li><a href="#maps">Maps</a></li>
+    <li><a href="#adventures">Adventures</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#contact" class="nav-cta">Say Hello</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-left">
+    <span class="hero-tag">📍 Downtown Los Angeles</span>
+    <h1 class="hero-headline">Hi, I'm Josh.<br>I live in <em>DTLA</em><br>and I love it<br>here.</h1>
+    <p class="hero-intro">
+      I've been a proud Downtowner for over 20 years. Every Wednesday I host a free dinner for my neighbors on my rooftop. I collect <strong>pre-1930s LA maps</strong>. I've been to Sundance 22 times. I've eaten my way through Bali. And somewhere in between all of that, I built a <strong>political consulting firm</strong> that's pretty good at getting things done in this city.
+    </p>
+    <div class="hero-links">
+      <a href="#dinner-club" class="btn-primary">Meet me at dinner 🍽️</a>
+      <a href="#about" class="btn-secondary">Learn more</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <!-- PHOTO SLOT: replace with <img src="Josh by window large.jpg" alt="Josh Gray-Emmer"> -->
+    <img src="Josh by window large.jpg" alt="Josh Gray-Emmer">
+  </div>
+</section>
+
+<!-- ── FACTS STRIP ── -->
+<div class="facts-strip">
+  <div class="fact">
+    <div class="fact-num">15</div>
+    <div class="fact-lbl">Years hosting Wednesday dinners</div>
+  </div>
+  <div class="fact">
+    <div class="fact-num">22+</div>
+    <div class="fact-lbl">Years attending Sundance</div>
+  </div>
+  <div class="fact">
+    <div class="fact-num">100K</div>
+    <div class="fact-lbl">DTLA neighbors in my network</div>
+  </div>
+  <div class="fact">
+    <div class="fact-num">750+</div>
+    <div class="fact-lbl">Dinners hosted so far</div>
+  </div>
+</div>
+
+<!-- ── ABOUT ── -->
+<section class="section" id="about">
+  <div class="about-grid">
+    <div class="about-photo-slot">
+      <!-- PHOTO SLOT: drop in a candid photo of Josh -->
+      <div class="about-photo-placeholder">
+        <span style="font-size:32px">📸</span>
+        <span>Add a candid photo here</span>
+      </div>
+    </div>
+    <div class="about-text">
+      <span class="section-label">About me</span>
+      <h2 class="section-title">A little bit about<br><em>who I am</em></h2>
+      <p>I grew up obsessed with film — enough that Robert Redford invited me to Sundance at 13, and I wrote and produced my own film that premiered there at 18. That early taste of "just go make the thing" has pretty much shaped everything since.</p>
+      <p>I moved to Downtown LA in 2002 when it was still <strong>genuinely wild</strong> — before the restaurants, before the crowds, when Spring Street was a ghost town. I've watched this neighborhood become one of America's great urban places, and I've had the good fortune of helping make it happen.</p>
+      <p>Along the way I started a political consulting firm, built a community dinner series that's been running every week for 15 years, collected a bunch of old maps, took a year off to live in Bali, and somehow ended up with a network of <strong>100,000 Angelenos</strong> who trust me with their inbox.</p>
+      <p>I'm happiest on my rooftop with 30 neighbors, a good chef, and a bottle of wine. If that sounds like your kind of evening, <em>come to dinner</em>.</p>
+      <a href="#contact" class="btn-primary" style="width:fit-content;">Get in touch →</a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── DINNER CLUB ── -->
+<section class="section section-alt" id="dinner-club">
+  <div class="dc-hero">
+    <div class="dc-text">
+      <span class="section-label">Community institution</span>
+      <h2 class="section-title">The DTLA<br>Dinner Club</h2>
+      <p class="section-body">Every Wednesday for 15 years, I've opened my rooftop to 30 strangers. No ticket price. No agenda. Multi-course, chef-driven, completely free. Just the belief that a neighborhood is only as strong as the connections between its people.</p>
+      <p class="section-body" style="margin-top:0.75rem;">It started as a simple idea and became something I never expected — one of Downtown's most beloved little institutions. Celebrities have cooked. Neighbors have fallen in love. People have made lifelong friends over a table they almost didn't show up to.</p>
+      <div class="dc-stats">
+        <div class="dc-stat">
+          <div class="dc-stat-num">15</div>
+          <div class="dc-stat-lbl">Years running</div>
+        </div>
+        <div class="dc-stat">
+          <div class="dc-stat-num">750+</div>
+          <div class="dc-stat-lbl">Dinners hosted</div>
+        </div>
+        <div class="dc-stat">
+          <div class="dc-stat-num">22K+</div>
+          <div class="dc-stat-lbl">Neighbors fed</div>
+        </div>
+      </div>
+      <a href="https://www.dtladinnerclub.com" target="_blank" rel="noopener" class="btn-primary" style="margin-top:1rem; width:fit-content;">Visit dtladinnerclub.com →</a>
+    </div>
+    <div class="dc-photo-grid">
+      <div class="dc-photo">
+        <div class="dc-photo-placeholder">Dinner Club photo 1</div>
+      </div>
+      <div class="dc-photo">
+        <div class="dc-photo-placeholder">Dinner Club photo 2</div>
+      </div>
+      <div class="dc-photo">
+        <div class="dc-photo-placeholder">Dinner Club photo 3</div>
+      </div>
+      <div class="dc-photo">
+        <div class="dc-photo-placeholder">Dinner Club photo 4</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── MAPS ── -->
+<section class="section section-sage" id="maps">
+  <div class="maps-intro">
+    <div>
+      <span class="section-label">The collection</span>
+      <h2 class="section-title">Pre-1930s<br><em>Los Angeles Maps</em></h2>
+      <p class="section-body">I've been collecting original street-level maps of Los Angeles from before 1930 for years. There's something about holding a map of a city you know intimately, but seeing it as it was — the ghost streets, the missing freeways, the orange groves where your apartment now stands.</p>
+      <p class="section-body" style="margin-top:0.75rem;">The collection was previously displayed at The Biltmore Tower in DTLA. If you're a fellow map nerd, let's talk.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;padding-top:2.5rem;">
+      <div style="background:white;border-radius:10px;padding:1.25rem;border:1px solid var(--border);">
+        <div style="font-size:22px;margin-bottom:8px;">🗺️</div>
+        <div style="font-size:14px;font-weight:500;color:var(--text-dark);margin-bottom:4px;">Pre-1930 originals</div>
+        <div style="font-size:13px;color:var(--text-mid);">Original printed street maps, not reproductions</div>
+      </div>
+      <div style="background:white;border-radius:10px;padding:1.25rem;border:1px solid var(--border);">
+        <div style="font-size:22px;margin-bottom:8px;">🏛️</div>
+        <div style="font-size:14px;font-weight:500;color:var(--text-dark);margin-bottom:4px;">Previously displayed</div>
+        <div style="font-size:13px;color:var(--text-mid);">At The Biltmore Tower, Downtown LA</div>
+      </div>
+      <div style="background:white;border-radius:10px;padding:1.25rem;border:1px solid var(--border);">
+        <div style="font-size:22px;margin-bottom:8px;">📬</div>
+        <div style="font-size:14px;font-weight:500;color:var(--text-dark);margin-bottom:4px;">Fellow collectors welcome</div>
+        <div style="font-size:13px;color:var(--text-mid);">Always interested in trading stories and finds</div>
+      </div>
+    </div>
+  </div>
+  <div class="map-collection-grid">
+    <div class="map-item">
+      <div class="map-item-placeholder">📜<br>Map photo 1<br>Drop image here</div>
+    </div>
+    <div class="map-item">
+      <div class="map-item-placeholder">📜<br>Map photo 2<br>Drop image here</div>
+    </div>
+    <div class="map-item">
+      <div class="map-item-placeholder">📜<br>Map photo 3<br>Drop image here</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── TRAVEL MAP ── -->
+<section class="section" id="adventures">
+  <span class="section-label">Adventures</span>
+  <h2 class="section-title">Places I've been</h2>
+  <p class="section-body">From Sundance in January to Bali for a whole year, from a solo trip through Southeast Asia to eating my way through Europe. The world is too interesting to stay home.</p>
+  <div id="travel-map"></div>
+
+  <div class="adventures-grid" style="margin-top:2.5rem;">
+    <div class="adventure-card">
+      <div class="adventure-photo-placeholder">
+        <span style="font-size:28px">🎬</span>
+        <span>Sundance<br>photo here</span>
+      </div>
+      <div class="adventure-overlay">
+        <div class="adventure-title">Sundance</div>
+        <div class="adventure-desc">22 years at the festival. Started at 13, premiered a film at 18.</div>
+      </div>
+    </div>
+    <div class="adventure-card">
+      <div class="adventure-photo-placeholder">
+        <span style="font-size:28px">🌴</span>
+        <span>Bali<br>photo here</span>
+      </div>
+      <div class="adventure-overlay">
+        <div class="adventure-title">Bali</div>
+        <div class="adventure-desc">Took a year off and lived there. Brought the Dinner Club with me.</div>
+      </div>
+    </div>
+    <div class="adventure-card">
+      <div class="adventure-photo-placeholder">
+        <span style="font-size:28px">✈️</span>
+        <span>Adventures<br>photo here</span>
+      </div>
+      <div class="adventure-overlay">
+        <div class="adventure-title">Everywhere else</div>
+        <div class="adventure-desc">Southeast Asia, Europe, Mexico. Always with good food in mind.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── WORK ── -->
+<section class="section section-alt" id="work">
+  <div style="max-width:680px;margin-bottom:3rem;">
+    <span class="section-label">What I do</span>
+    <h2 class="section-title">The work side<br>of things</h2>
+    <p class="section-body">Between the dinners and the map-hunting, I run a political consulting and community engagement firm. We're pretty good at it. If you need to get something done in DTLA, I probably know exactly who to call.</p>
+  </div>
+  <div class="work-grid">
+    <div class="work-card">
+      <span class="work-icon">🌉</span>
+      <p class="work-title">BridGE DTLA</p>
+      <p class="work-desc">My community engagement and political strategy firm. 20+ years of relationships, a 100K opt-in network, and a track record of getting complex projects approved in LA. Clients include Uber, LA Chamber, DLA Piper, and the LA LGBT Center.</p>
+      <a class="work-link" href="https://www.bridgedtla.com" target="_blank" rel="noopener">bridgedtla.com →</a>
+    </div>
+    <div class="work-card">
+      <span class="work-icon">🍽️</span>
+      <p class="work-title">DTLA Dinner Club</p>
+      <p class="work-desc">Free weekly community dinner. 15 years, 750+ dinners, 22,000+ neighbors welcomed. The most fun thing I've ever built — and the one I'm most proud of.</p>
+      <a class="work-link" href="https://www.dtladinnerclub.com" target="_blank" rel="noopener">dtladinnerclub.com →</a>
+    </div>
+    <div class="work-card">
+      <span class="work-icon">❤️</span>
+      <p class="work-title">Dinner Club Foundation</p>
+      <p class="work-desc">The nonprofit arm of the Dinner Club, working to expand the model to communities across LA and beyond.</p>
+      <a class="work-link" href="https://www.dinnerclubfoundation.org" target="_blank" rel="noopener">dinnerclubfoundation.org →</a>
+    </div>
+    <div class="work-card">
+      <span class="work-icon">🗺️</span>
+      <p class="work-title">Maps Collection</p>
+      <p class="work-desc">Pre-1930s original street maps of Los Angeles. Previously displayed at The Biltmore Tower. A passion project that's become a real obsession.</p>
+      <a class="work-link" href="http://www.dtlamaps.com" target="_blank" rel="noopener">dtlamaps.com →</a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── QUOTES ── -->
+<section class="section">
+  <div style="max-width:580px;margin-bottom:2.5rem;">
+    <span class="section-label">Kind words</span>
+    <h2 class="section-title">What people say</h2>
+  </div>
+  <div class="quotes-strip">
+    <div class="quote-card">
+      <span class="quote-mark">"</span>
+      <p class="quote-text">Josh is the consummate DTLA insider. You would be hard pressed to find anyone else with his skill set and knowledge of our community. He is helping to shape our new DTLA.</p>
+      <div class="quote-attr">
+        <div class="quote-name">Carol Schatz</div>
+        <div class="quote-role">Former President & CEO, Central City Association</div>
+      </div>
+    </div>
+    <div class="quote-card">
+      <span class="quote-mark">"</span>
+      <p class="quote-text">Josh is scary good at tech-enhanced outreach and coalition-building. His knowledge, know-how, and network in DTLA will help you get your message in front of the right eyeballs.</p>
+      <div class="quote-attr">
+        <div class="quote-name">Tanner Blackman</div>
+        <div class="quote-role">Partner, Kindel Gagan Public Affairs</div>
+      </div>
+    </div>
+    <div class="quote-card">
+      <span class="quote-mark">"</span>
+      <p class="quote-text">The DTLA Dinner Club isn't just a dinner — it's an act of love for his community. Josh sets the table and allows his neighborhood to fill the seats.</p>
+      <div class="quote-attr">
+        <div class="quote-name">A neighbor</div>
+        <div class="quote-role">DTLA Dinner Club guest</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<div class="contact-section" id="contact">
+  <span class="section-label" style="display:block;text-align:center;">Get in touch</span>
+  <h2 class="section-title" style="text-align:center;">Let's grab dinner.<br><em>Or coffee. Or a call.</em></h2>
+  <p class="section-body" style="text-align:center;margin:0 auto 2rem;">Whether you want to come to dinner, talk about maps, work together on something in DTLA, or just say hello — my door is open. Well, my rooftop is open.</p>
+  <div class="contact-links">
+    <a href="mailto:josh@bridgedtla.com" class="contact-btn contact-btn-primary">✉️ Send me an email</a>
+    <a href="https://www.linkedin.com/in/joshgrayemmer" target="_blank" rel="noopener" class="contact-btn contact-btn-secondary">LinkedIn</a>
+    <a href="http://instagram.com/dtlajosh" target="_blank" rel="noopener" class="contact-btn contact-btn-secondary">Instagram</a>
+    <a href="https://www.bridgedtla.com" target="_blank" rel="noopener" class="contact-btn contact-btn-secondary">BridGE DTLA ↗</a>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <span class="footer-name">Josh Gray-Emmer</span>
+  <div class="footer-links">
+    <a href="https://www.dtladinnerclub.com" target="_blank">Dinner Club</a>
+    <a href="http://www.dtlamaps.com" target="_blank">Maps</a>
+    <a href="https://www.bridgedtla.com" target="_blank">BridGE DTLA</a>
+    <a href="https://www.linkedin.com/in/joshgrayemmer" target="_blank">LinkedIn</a>
+    <a href="http://instagram.com/dtlajosh" target="_blank">Instagram</a>
+  </div>
+</footer>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<!-- ── TRAVEL MAP SCRIPT ── -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const map = L.map('travel-map', {
+      center: [25, 15],
+      zoom: 2,
+      scrollWheelZoom: false,
+      zoomControl: true
+    });
+
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      attribution: '© OpenStreetMap, © CARTO',
+      maxZoom: 19
+    }).addTo(map);
+
+    const places = [
+      { name: "Los Angeles", coords: [34.0522, -118.2437], note: "Home 🏠 — 20+ years in DTLA" },
+      { name: "Park City, Utah", coords: [40.6461, -111.4980], note: "Sundance ❄️ — 22 years running" },
+      { name: "Bali, Indonesia", coords: [-8.3405, 115.0920], note: "Bali 🌴 — lived here for a year" },
+      { name: "New York", coords: [40.7128, -74.0060], note: "New York 🗽" },
+      { name: "London", coords: [51.5074, -0.1278], note: "London 🇬🇧" },
+      { name: "Paris", coords: [48.8566, 2.3522], note: "Paris 🥐" },
+      { name: "Tokyo", coords: [35.6762, 139.6503], note: "Tokyo 🇯🇵" },
+      { name: "Bangkok", coords: [13.7563, 100.5018], note: "Bangkok 🇹🇭" },
+      { name: "Mexico City", coords: [19.4326, -99.1332], note: "Mexico City 🌮" },
+      { name: "Amsterdam", coords: [52.3676, 4.9041], note: "Amsterdam 🇳🇱" },
+      { name: "Barcelona", coords: [41.3851, 2.1734], note: "Barcelona 🇪🇸" },
+      { name: "Rome", coords: [41.9028, 12.4964], note: "Rome 🍕" },
+      { name: "Sydney", coords: [-33.8688, 151.2093], note: "Sydney 🦘" },
+      { name: "Singapore", coords: [1.3521, 103.8198], note: "Singapore 🇸🇬" },
+      { name: "Istanbul", coords: [41.0082, 28.9784], note: "Istanbul 🇹🇷" },
+      { name: "Oaxaca", coords: [17.0732, -96.7266], note: "Oaxaca 🌶️" },
+    ];
+
+    const dotIcon = L.divIcon({
+      className: '',
+      html: '<div style="width:12px;height:12px;background:#c4603a;border:2px solid white;border-radius:50%;box-shadow:0 2px 6px rgba(0,0,0,0.3);"></div>',
+      iconSize: [12, 12],
+      iconAnchor: [6, 6]
+    });
+
+    places.forEach(p => {
+      L.marker(p.coords, { icon: dotIcon })
+        .addTo(map)
+        .bindPopup(`<strong>${p.name}</strong><br><small>${p.note}</small>`);
+    });
+  });
+</script>
+
+</body>
+</html>

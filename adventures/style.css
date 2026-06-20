@@ -1,0 +1,142 @@
+/* ── SHARED VARIABLES ── */
+:root {
+  --terra: #c4603a;
+  --terra-light: #d4795a;
+  --sand: #f5efe6;
+  --sand-dark: #ede4d6;
+  --warm-white: #faf6f0;
+  --text-dark: #2c2418;
+  --text-mid: #6b5c4a;
+  --text-light: #9a8a78;
+  --border: rgba(44,36,24,0.1);
+  --sage: #7a9e7e;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--warm-white);
+  color: var(--text-dark);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── NAV ── */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--sand);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2.5rem; height: 62px;
+}
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px; font-weight: 700;
+  color: var(--text-dark); text-decoration: none;
+  letter-spacing: -0.3px;
+}
+.nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+.nav-links a {
+  font-size: 13px; font-weight: 500; letter-spacing: 0.04em;
+  text-transform: uppercase; color: var(--text-mid);
+  text-decoration: none; transition: color 0.2s;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--terra); }
+.nav-cta {
+  background: var(--terra); color: white !important;
+  padding: 9px 20px; border-radius: 100px;
+  font-size: 13px !important; font-weight: 500 !important;
+  text-transform: uppercase !important; letter-spacing: 0.04em !important;
+  transition: background 0.2s !important;
+}
+.nav-cta:hover { background: var(--terra-light) !important; color: white !important; }
+
+/* ── BREADCRUMB ── */
+.breadcrumb {
+  padding: 1rem 2.5rem;
+  font-size: 12px; color: var(--text-light);
+  letter-spacing: 0.04em; text-transform: uppercase;
+  border-bottom: 1px solid var(--border);
+  background: var(--sand);
+}
+.breadcrumb a { color: var(--terra); text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+.breadcrumb span { margin: 0 0.4rem; }
+
+/* ── POST HERO ── */
+.post-hero {
+  background: var(--sand);
+  padding: 4rem 2.5rem 3rem;
+  border-bottom: 1px solid var(--border);
+  max-width: 800px; margin: 0 auto;
+}
+.post-category {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--terra);
+  margin-bottom: 1rem; display: block;
+}
+.post-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 700; line-height: 1.15;
+  color: var(--text-dark); margin-bottom: 1.25rem;
+}
+.post-meta {
+  font-size: 13px; color: var(--text-light);
+  display: flex; gap: 1rem; align-items: center;
+}
+.post-meta-sep { color: var(--border); }
+
+/* ── POST BODY ── */
+.post-body {
+  max-width: 720px; margin: 0 auto;
+  padding: 3rem 2.5rem 5rem;
+}
+.post-body p { margin-bottom: 1.5rem; font-size: 17px; line-height: 1.75; color: var(--text-dark); }
+.post-body h2 { font-family: 'Playfair Display', serif; font-size: 1.6rem; margin: 2.5rem 0 1rem; color: var(--text-dark); }
+.post-body h3 { font-size: 1.1rem; font-weight: 600; margin: 2rem 0 0.75rem; color: var(--text-dark); }
+.post-body a { color: var(--terra); }
+.post-body a:hover { text-decoration: underline; }
+.post-body blockquote {
+  border-left: 3px solid var(--terra);
+  padding: 0.75rem 1.5rem; margin: 2rem 0;
+  background: var(--sand); border-radius: 0 8px 8px 0;
+  font-style: italic; color: var(--text-mid);
+}
+.post-body strong { font-weight: 600; }
+.post-body hr { border: none; border-top: 1px solid var(--border); margin: 2.5rem 0; }
+
+/* ── POST NAV ── */
+.post-nav {
+  max-width: 720px; margin: 0 auto;
+  padding: 2rem 2.5rem 4rem;
+  display: flex; justify-content: space-between; gap: 1rem;
+  border-top: 1px solid var(--border);
+}
+.post-nav a {
+  font-size: 13px; font-weight: 500; color: var(--terra);
+  text-decoration: none; letter-spacing: 0.02em;
+}
+.post-nav a:hover { text-decoration: underline; }
+.post-nav .older { text-align: right; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--text-dark);
+  color: rgba(255,255,255,0.5);
+  text-align: center; padding: 2rem;
+  font-size: 12px; letter-spacing: 0.04em;
+}
+footer a { color: var(--terra); text-decoration: none; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  nav { padding: 0 1.5rem; }
+  .nav-links { gap: 1rem; }
+  .post-hero { padding: 2.5rem 1.5rem 2rem; }
+  .post-body { padding: 2rem 1.5rem 3rem; }
+  .breadcrumb { padding: 1rem 1.5rem; }
+  .post-nav { padding: 1.5rem 1.5rem 3rem; }
+}

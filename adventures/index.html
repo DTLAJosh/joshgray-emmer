@@ -5,6 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Adventures — Josh Gray-Emmer</title>
 <meta name="description" content="Travel writing by Josh Gray-Emmer — Bali, Hong Kong, Beijing, Europe, Costa Rica, and back to DTLA.">
+<link rel="canonical" href="https://www.joshgray-emmer.com/adventures/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Adventures — Josh Gray-Emmer">
+<meta property="og:description" content="Travel writing from Bali, Hong Kong, Beijing, Europe, Costa Rica, and back to DTLA.">
+<meta property="og:image" content="https://www.joshgray-emmer.com/images/adventure.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -95,8 +102,15 @@ footer { background: var(--text-dark); color: rgba(255,255,255,0.5); text-align:
 footer a { color: var(--terra); text-decoration: none; }
 
 @media (max-width: 768px) {
-  nav { padding: 0 1.25rem; }
-  .nav-links { gap: 1rem; }
+  nav {
+    height: auto; min-height: 62px; padding: 0.7rem 1rem;
+    flex-direction: column; align-items: flex-start; gap: 0.45rem;
+  }
+  .nav-links {
+    width: 100%; gap: 1rem; padding-bottom: 0.2rem;
+    overflow-x: auto; scrollbar-width: thin;
+  }
+  .nav-links a { white-space: nowrap; font-size: 11px; }
   .adventures-hero { padding: 3rem 1.5rem 2.5rem; }
   .hero-meta { flex-wrap: wrap; gap: 1.5rem; }
   .chapter-nav { padding: 0 1.25rem; }
@@ -109,14 +123,14 @@ footer a { color: var(--terra); text-decoration: none; }
 <body>
 
 <nav>
-  <a class="nav-logo" href="../index.html">Josh Gray-Emmer</a>
+  <a class="nav-logo" href="/">Josh Gray-Emmer</a>
   <ul class="nav-links">
-    <li><a href="../index.html#about">About</a></li>
-    <li><a href="../index.html#dinner-club">Dinner Club</a></li>
-    <li><a href="../index.html#maps">Maps</a></li>
-    <li><a href="index.html" class="active">Adventures</a></li>
-    <li><a href="../index.html#work">Work</a></li>
-    <li><a href="../index.html#contact" class="nav-cta">Say Hello</a></li>
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#dinner-club">Dinner Club</a></li>
+    <li><a href="/#maps">Maps</a></li>
+    <li><a href="/adventures/" class="active">Adventures</a></li>
+    <li><a href="/#work">Work</a></li>
+    <li><a href="/#contact" class="nav-cta">Say Hello</a></li>
   </ul>
 </nav>
 
@@ -129,7 +143,7 @@ footer a { color: var(--terra); text-decoration: none; }
     <div class="hero-meta">
       <div><span class="hero-stat-num">20+</span><span class="hero-stat-lbl">Countries visited</span></div>
       <div><span class="hero-stat-num">1 year</span><span class="hero-stat-lbl">Living in Bali</span></div>
-      <div><span class="hero-stat-num">40+</span><span class="hero-stat-lbl">Posts written</span></div>
+      <div><span class="hero-stat-num">50+</span><span class="hero-stat-lbl">Posts written</span></div>
     </div>
   </div>
 </div>
@@ -295,57 +309,68 @@ footer a { color: var(--terra); text-decoration: none; }
   <div class="chapter-header">
     <span class="chapter-label">2008 – 2012</span>
     <h2 class="chapter-title">Previous Adventures</h2>
-    <p class="chapter-intro">Before Bali, I traveled alone. Hong Kong became my favorite city in the world. Beijing with a local guide. Prague and Helsinki in winter. Costa Rica with friends. The blog posts from these trips still live on the old site — full migration coming soon.</p>
+    <p class="chapter-intro">The complete early travel archive: Hong Kong, Macao, Beijing, London, Prague, Helsinki, and Costa Rica—now preserved here instead of sending you back to the old site.</p>
   </div>
   <div class="prev-adv-grid">
     <div class="adv-chapter-card">
       <span class="adv-chapter-emoji">🇭🇰</span>
       <div class="adv-chapter-name">Hong Kong</div>
-      <div class="adv-chapter-sub">Plus Shenzhen & Macao · March 2008</div>
-      <p style="font-size:13px;color:var(--text-mid);line-height:1.6;">Supposed to be a few days. Turned into two weeks thanks to two incredible hosts. Hong Kong became my favorite city in the world outside of DTLA.</p>
-      <ul class="adv-chapter-posts" style="margin-top:1rem;">
-        <li><a href="https://www.joshgray-emmer.com/josh-gray-emmer/2012/02/01/hong-kong-night-one" target="_blank">Hong Kong Night One</a></li>
-        <li><a href="https://www.joshgray-emmer.com/josh-gray-emmer/2012/02/01/hong-kong-day-one" target="_blank">Hong Kong Day One</a></li>
-        <li><a href="https://www.joshgray-emmer.com/josh-gray-emmer/2012/02/04/hong-kong-day-seven" target="_blank">Hong Kong Day Seven</a></li>
-        <li><a href="https://www.joshgray-emmer.com/josh-gray-emmer/2012/02/04/hong-kong-day-eleven-macao-day-one" target="_blank">Hong Kong Day 11 / Macao Day One</a></li>
-        <li><a href="https://www.joshgray-emmer.com/josh-gray-emmer/2012/02/04/hong-kong-day-thirteen" target="_blank">Hong Kong Day Thirteen</a></li>
+      <div class="adv-chapter-sub">Plus Shenzhen & Macao · March 2008 · 10 posts</div>
+      <ul class="adv-chapter-posts">
+        <li><a href="previous/hong-kong-day-thirteen">Hong Kong Day Thirteen</a></li>
+        <li><a href="previous/hong-kong-day-fourteen">Hong Kong Day Fourteen</a></li>
+        <li><a href="previous/hong-kong-day-twelve">Hong Kong Day Twelve</a></li>
+        <li><a href="previous/hong-kong-day-eleven-macao-day-one">Hong Kong Day Eleven // Macao Day One</a></li>
+        <li><a href="previous/hong-kong-day-seven">Hong Kong Day Seven</a></li>
+        <li><a href="previous/hong-kong-day-four">Hong Kong Day Four</a></li>
+        <li><a href="previous/hong-kong-day-one">Hong Kong Day One</a></li>
+        <li><a href="previous/hong-kong-day-three">Hong Kong Day Three</a></li>
+        <li><a href="previous/hong-kong-day-two">Hong Kong Day Two</a></li>
+        <li><a href="previous/hong-kong-night-one">Hong Kong Night One</a></li>
       </ul>
     </div>
     <div class="adv-chapter-card">
       <span class="adv-chapter-emoji">🇨🇳</span>
       <div class="adv-chapter-name">Beijing</div>
-      <div class="adv-chapter-sub">November 2011</div>
-      <p style="font-size:13px;color:var(--text-mid);line-height:1.6;">Beijing with ChinaMax — a local guide who showed me a city completely different from the tourist version. The Forbidden City, the Great Wall, and hutong alleyways.</p>
-      <ul class="adv-chapter-posts" style="margin-top:1rem;">
-        <li><a href="https://www.joshgray-emmer.com/josh-gray-emmer/2011/11/14/welcome-to-beijing" target="_blank">Welcome to Beijing!</a></li>
-        <li><a href="https://www.joshgray-emmer.com/josh-gray-emmer/2011/11/16/beijing-days-2-and-3" target="_blank">Beijing Days 2 and 3</a></li>
-        <li><a href="https://www.joshgray-emmer.com/josh-gray-emmer/2011/11/18/beijing-day-4" target="_blank">Beijing Day 4</a></li>
-        <li><a href="https://www.joshgray-emmer.com/josh-gray-emmer/2012/02/04/beijing-day-five" target="_blank">Beijing Day Five</a></li>
-        <li><a href="https://www.joshgray-emmer.com/josh-gray-emmer/2012/02/04/beijing-days-six-seven" target="_blank">Beijing Days Six & Seven</a></li>
+      <div class="adv-chapter-sub">November 2011 · 7 posts</div>
+      <ul class="adv-chapter-posts">
+        <li><a href="previous/beijing-day-five">Beijing Day Five</a></li>
+        <li><a href="previous/beijing-day-one">Beijing Day One</a></li>
+        <li><a href="previous/beijing-days-six-and-seven">Beijing Days Six &amp; Seven</a></li>
+        <li><a href="previous/beijing-day-five-part-two">Beijing Day Five Part Two</a></li>
+        <li><a href="previous/beijing-day-4">Beijing - Day 4</a></li>
+        <li><a href="previous/beijing-days-2-and-3">Beijing - Days 2 and 3!</a></li>
+        <li><a href="previous/welcome-to-beijing">Welcome to Beijing!</a></li>
       </ul>
     </div>
     <div class="adv-chapter-card">
       <span class="adv-chapter-emoji">🇪🇺</span>
       <div class="adv-chapter-name">Europe</div>
-      <div class="adv-chapter-sub">London, Prague, Helsinki · 2008 & 2012</div>
-      <p style="font-size:13px;color:var(--text-mid);line-height:1.6;">Solo through three cities. London as a launching pad. Prague in spring — one of the most beautiful cities I've ever seen. Helsinki in a way no guidebook describes.</p>
-      <ul class="adv-chapter-posts" style="margin-top:1rem;">
-        <li><a href="https://www.joshgray-emmer.com/josh-gray-emmer/2012/02/04/london-day-one" target="_blank">London Day One</a></li>
-        <li><a href="https://www.joshgray-emmer.com/josh-gray-emmer/2012/02/04/prague-days-one-two" target="_blank">Prague Days One & Two</a></li>
-        <li><a href="https://www.joshgray-emmer.com/josh-gray-emmer/2012/02/04/helsinki-day-one" target="_blank">Helsinki Day One</a></li>
-        <li><a href="https://www.joshgray-emmer.com/josh-gray-emmer/2012/02/04/prague-days-five-six" target="_blank">Prague Days Five & Six</a></li>
+      <div class="adv-chapter-sub">London, Prague & Helsinki · 2008–2012 · 9 posts</div>
+      <ul class="adv-chapter-posts">
+        <li><a href="previous/prague-days-five-and-six">Prague Days Five &amp; Six</a></li>
+        <li><a href="previous/prague-night-two">Prague Night Two</a></li>
+        <li><a href="previous/prague-days-one-and-two">Prague Days One &amp; Two</a></li>
+        <li><a href="previous/helsinki-last-few-days">Helsinki Last Few Days</a></li>
+        <li><a href="previous/helsinki-days-two-three-and-four">Helsinki Days Two, Three and Four</a></li>
+        <li><a href="previous/helsinki-day-one">Helsinki Day One</a></li>
+        <li><a href="previous/prague-days-three-and-four">Prague Days Three &amp; Four</a></li>
+        <li><a href="previous/london-day-two">London Day Two</a></li>
+        <li><a href="previous/london-day-one">London Day One</a></li>
       </ul>
     </div>
     <div class="adv-chapter-card">
       <span class="adv-chapter-emoji">🇨🇷</span>
       <div class="adv-chapter-name">Costa Rica</div>
-      <div class="adv-chapter-sub">January 2012</div>
-      <p style="font-size:13px;color:var(--text-mid);line-height:1.6;">The one adventure I didn't take alone. Seven days, rainforests, beaches, and the realization that I'd been missing out on Central America my whole life.</p>
-      <ul class="adv-chapter-posts" style="margin-top:1rem;">
-        <li><a href="https://www.joshgray-emmer.com/josh-gray-emmer/2012/02/01/costa-rica-day-one" target="_blank">Costa Rica Day One</a></li>
-        <li><a href="https://www.joshgray-emmer.com/josh-gray-emmer/2012/02/01/costa-rica-day-three" target="_blank">Costa Rica Day Three</a></li>
-        <li><a href="https://www.joshgray-emmer.com/josh-gray-emmer/2012/02/01/costa-rica-day-five" target="_blank">Costa Rica Day Five</a></li>
-        <li><a href="https://www.joshgray-emmer.com/josh-gray-emmer/2012/02/01/costa-rica-day-seven" target="_blank">Costa Rica Day Seven</a></li>
+      <div class="adv-chapter-sub">January 2012 · 7 posts</div>
+      <ul class="adv-chapter-posts">
+        <li><a href="previous/costa-rica-day-seven">Costa Rica Day Seven</a></li>
+        <li><a href="previous/costa-rica-day-six">Costa Rica Day Six</a></li>
+        <li><a href="previous/costa-rica-day-five">Costa Rica Day Five</a></li>
+        <li><a href="previous/costa-rica-day-four">Costa Rica Day Four</a></li>
+        <li><a href="previous/costa-rica-day-three">Costa Rica Day Three</a></li>
+        <li><a href="previous/costa-rica-day-two">Costa Rica Day Two</a></li>
+        <li><a href="previous/costa-rica-day-one">Costa Rica Day One</a></li>
       </ul>
     </div>
   </div>
@@ -427,7 +452,7 @@ footer a { color: var(--terra); text-decoration: none; }
 </section>
 
 <footer>
-  <p>© Josh Gray-Emmer · <a href="../index.html">joshgray-emmer.netlify.app</a></p>
+  <p>© Josh Gray-Emmer · <a href="/">joshgray-emmer.com</a></p>
 </footer>
 
 </body>

@@ -1,20 +1,20 @@
-import os
+from pathlib import Path
 
 NAV = '''<nav>
-  <a class="nav-logo" href="../index.html">Josh Gray-Emmer</a>
+  <a class="nav-logo" href="/">Josh Gray-Emmer</a>
   <ul class="nav-links">
-    <li><a href="../index.html#about">About</a></li>
-    <li><a href="../index.html#dinner-club">Dinner Club</a></li>
-    <li><a href="../index.html#maps">Maps</a></li>
-    <li><a href="index.html" class="active">Adventures</a></li>
-    <li><a href="../index.html#work">Work</a></li>
-    <li><a href="../index.html#contact" class="nav-cta">Say Hello</a></li>
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#dinner-club">Dinner Club</a></li>
+    <li><a href="/#maps">Maps</a></li>
+    <li><a href="/adventures/" class="active">Adventures</a></li>
+    <li><a href="/#work">Work</a></li>
+    <li><a href="/#contact" class="nav-cta">Say Hello</a></li>
   </ul>
 </nav>'''
 
 FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">'
 
-def post(title, date, category, breadcrumb_label, content, prev_url=None, prev_label=None, next_url=None, next_label=None):
+def post(filename, title, date, category, breadcrumb_label, content, prev_url=None, prev_label=None, next_url=None, next_label=None):
     nav_html = ''
     if prev_url or next_url:
         nav_html = '<div class="post-nav">'
@@ -31,14 +31,20 @@ def post(title, date, category, breadcrumb_label, content, prev_url=None, prev_l
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="{title}, a travel story by Josh Gray-Emmer.">
+<link rel="canonical" href="https://www.joshgray-emmer.com/adventures/posts/{filename.removesuffix('.html')}">
+<meta property="og:type" content="article">
+<meta property="og:title" content="{title} — Josh Gray-Emmer">
+<meta property="og:description" content="{title}, a travel story by Josh Gray-Emmer.">
 <title>{title} — Josh Gray-Emmer</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 {FONTS}
 <link rel="stylesheet" href="../style.css">
 </head>
 <body>
 {NAV}
 <div class="breadcrumb">
-  <a href="../index.html">Adventures</a><span>›</span>{breadcrumb_label}
+  <a href="/adventures/">Adventures</a><span>›</span>{breadcrumb_label}
 </div>
 <div class="post-hero">
   <span class="post-category">{category}</span>
@@ -49,7 +55,7 @@ def post(title, date, category, breadcrumb_label, content, prev_url=None, prev_l
 {content}
 </div>
 {nav_html}
-<footer><p>© Josh Gray-Emmer · <a href="../index.html">joshgray-emmer.netlify.app</a></p></footer>
+<footer><p>© Josh Gray-Emmer · <a href="/">joshgray-emmer.com</a></p></footer>
 </body>
 </html>'''
 
@@ -183,6 +189,7 @@ posts = [
 
 for p in posts:
     html = post(
+        filename=p["file"],
         title=p["title"],
         date=p["date"],
         category=p["category"],
@@ -193,8 +200,8 @@ for p in posts:
         next_url=p.get("next_url"),
         next_label=p.get("next_label"),
     )
-    path = f'/home/claude/adventures/posts/{p["file"]}'
-    with open(path, 'w') as f:
+    path = Path(__file__).resolve().parent / "posts" / p["file"]
+    with path.open('w', encoding='utf-8') as f:
         f.write(html)
     print(f'✓ {p["file"]}')
 
@@ -456,6 +463,7 @@ extra_posts = [
 
 for p in extra_posts:
     html = post(
+        filename=p["file"],
         title=p["title"],
         date=p["date"],
         category=p["category"],
@@ -466,8 +474,8 @@ for p in extra_posts:
         next_url=p.get("next_url"),
         next_label=p.get("next_label"),
     )
-    path = f'/home/claude/adventures/posts/{p["file"]}'
-    with open(path, 'w') as f:
+    path = Path(__file__).resolve().parent / "posts" / p["file"]
+    with path.open('w', encoding='utf-8') as f:
         f.write(html)
     print(f'✓ {p["file"]}')
 

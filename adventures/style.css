@@ -107,6 +107,15 @@ nav {
 }
 .post-body strong { font-weight: 600; }
 .post-body hr { border: none; border-top: 1px solid var(--border); margin: 2.5rem 0; }
+.post-body img {
+  display: block; max-width: 100%; height: auto;
+  margin: 2rem auto; border-radius: 10px;
+}
+.post-featured-image {
+  display: block; width: min(720px, calc(100% - 3rem));
+  max-height: 560px; object-fit: cover;
+  margin: 2rem auto 0; border-radius: 12px;
+}
 
 /* ── POST NAV ── */
 .post-nav {
@@ -133,8 +142,15 @@ footer a { color: var(--terra); text-decoration: none; }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
-  nav { padding: 0 1.5rem; }
-  .nav-links { gap: 1rem; }
+  nav {
+    height: auto; min-height: 62px; padding: 0.7rem 1rem;
+    flex-direction: column; align-items: flex-start; gap: 0.45rem;
+  }
+  .nav-links {
+    width: 100%; gap: 1rem; padding-bottom: 0.2rem;
+    overflow-x: auto; scrollbar-width: thin;
+  }
+  .nav-links a { white-space: nowrap; font-size: 11px; }
   .post-hero { padding: 2.5rem 1.5rem 2rem; }
   .post-body { padding: 2rem 1.5rem 3rem; }
   .breadcrumb { padding: 1rem 1.5rem; }

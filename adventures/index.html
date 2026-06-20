@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adventures — Josh Gray-Emmer</title>
+<meta name="description" content="Travel writing by Josh Gray-Emmer — Bali, Hong Kong, Beijing, Europe, Costa Rica, and back to DTLA.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+:root {
+  --terra: #c4603a; --terra-light: #d4795a;
+  --sand: #f5efe6; --sand-dark: #ede4d6;
+  --warm-white: #faf6f0;
+  --text-dark: #2c2418; --text-mid: #6b5c4a; --text-light: #9a8a78;
+  --border: rgba(44,36,24,0.1); --sage: #7a9e7e;
+}
+body { font-family: 'DM Sans', sans-serif; background: var(--warm-white); color: var(--text-dark); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+/* NAV */
+nav { position: sticky; top: 0; z-index: 100; background: var(--sand); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 2.5rem; height: 62px; }
+.nav-logo { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--text-dark); text-decoration: none; letter-spacing: -0.3px; }
+.nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+.nav-links a { font-size: 13px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-mid); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover, .nav-links a.active { color: var(--terra); }
+.nav-cta { background: var(--terra); color: white !important; padding: 9px 20px; border-radius: 100px; font-size: 13px !important; font-weight: 500 !important; text-transform: uppercase !important; letter-spacing: 0.04em !important; transition: background 0.2s !important; }
+.nav-cta:hover { background: var(--terra-light) !important; }
+
+/* HERO */
+.adventures-hero {
+  background: var(--text-dark);
+  color: white;
+  padding: 5rem 2.5rem 4rem;
+  position: relative; overflow: hidden;
+}
+.adventures-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(196,96,58,0.3) 0%, transparent 60%);
+}
+.hero-inner { max-width: 700px; position: relative; }
+.hero-eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--terra-light); margin-bottom: 1rem; display: block; }
+.hero-title { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 700; line-height: 1.1; margin-bottom: 1.5rem; }
+.hero-title em { font-style: italic; color: var(--terra-light); }
+.hero-body { font-size: 17px; line-height: 1.7; color: rgba(255,255,255,0.75); max-width: 560px; }
+.hero-meta { margin-top: 2rem; display: flex; gap: 2.5rem; }
+.hero-stat-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: white; display: block; }
+.hero-stat-lbl { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+
+/* CHAPTER NAV */
+.chapter-nav { background: var(--sand); border-bottom: 1px solid var(--border); padding: 0 2.5rem; display: flex; gap: 0; overflow-x: auto; }
+.chapter-link { padding: 1.1rem 1.25rem; font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-mid); text-decoration: none; white-space: nowrap; border-bottom: 2px solid transparent; transition: all 0.2s; }
+.chapter-link:hover { color: var(--terra); border-bottom-color: var(--terra); }
+
+/* CHAPTER SECTIONS */
+.chapter { padding: 4rem 2.5rem; max-width: 1100px; margin: 0 auto; }
+.chapter + .chapter { border-top: 1px solid var(--border); }
+.chapter-header { margin-bottom: 2.5rem; }
+.chapter-label { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--terra); margin-bottom: 0.5rem; display: block; }
+.chapter-title { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; }
+.chapter-title em { font-style: italic; color: var(--terra); }
+.chapter-intro { font-size: 15px; color: var(--text-mid); max-width: 600px; margin-top: 0.75rem; line-height: 1.65; }
+
+/* POST GRID */
+.post-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.25rem; }
+.post-card { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 1.75rem; text-decoration: none; color: inherit; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; display: block; }
+.post-card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(196,96,58,0.1); border-color: var(--terra); }
+.post-card-cat { font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--terra); margin-bottom: 0.6rem; display: block; }
+.post-card-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; line-height: 1.3; margin-bottom: 0.5rem; }
+.post-card-date { font-size: 12px; color: var(--text-light); }
+.post-card-excerpt { font-size: 13px; color: var(--text-mid); margin-top: 0.75rem; line-height: 1.6; }
+
+/* PRESS LIST */
+.press-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 0.75rem; }
+.press-item { background: white; border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem 1.5rem; text-decoration: none; color: var(--text-dark); transition: border-color 0.2s, background 0.2s; display: flex; align-items: center; gap: 0.75rem; }
+.press-item:hover { border-color: var(--terra); background: var(--sand); }
+.press-arrow { color: var(--terra); font-size: 18px; flex-shrink: 0; }
+.press-label { font-size: 14px; line-height: 1.4; }
+
+/* PREV ADV CHAPTERS */
+.prev-adv-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.25rem; }
+.adv-chapter-card { background: var(--sand); border: 1px solid var(--border); border-radius: 12px; padding: 2rem 1.75rem; }
+.adv-chapter-emoji { font-size: 2rem; margin-bottom: 0.75rem; display: block; }
+.adv-chapter-name { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; margin-bottom: 0.4rem; }
+.adv-chapter-sub { font-size: 13px; color: var(--text-mid); margin-bottom: 1.25rem; }
+.adv-chapter-posts { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+.adv-chapter-posts li a { font-size: 13px; color: var(--terra); text-decoration: none; }
+.adv-chapter-posts li a:hover { text-decoration: underline; }
+
+/* FOOTER */
+footer { background: var(--text-dark); color: rgba(255,255,255,0.5); text-align: center; padding: 2rem; font-size: 12px; letter-spacing: 0.04em; }
+footer a { color: var(--terra); text-decoration: none; }
+
+@media (max-width: 768px) {
+  nav { padding: 0 1.25rem; }
+  .nav-links { gap: 1rem; }
+  .adventures-hero { padding: 3rem 1.5rem 2.5rem; }
+  .hero-meta { flex-wrap: wrap; gap: 1.5rem; }
+  .chapter-nav { padding: 0 1.25rem; }
+  .chapter { padding: 3rem 1.5rem; }
+  .post-grid { grid-template-columns: 1fr; }
+  .prev-adv-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="../index.html">Josh Gray-Emmer</a>
+  <ul class="nav-links">
+    <li><a href="../index.html#about">About</a></li>
+    <li><a href="../index.html#dinner-club">Dinner Club</a></li>
+    <li><a href="../index.html#maps">Maps</a></li>
+    <li><a href="index.html" class="active">Adventures</a></li>
+    <li><a href="../index.html#work">Work</a></li>
+    <li><a href="../index.html#contact" class="nav-cta">Say Hello</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="adventures-hero">
+  <div class="hero-inner">
+    <span class="hero-eyebrow">Travel Writing</span>
+    <h1 class="hero-title">A Downtowner's<br><em>Adventures</em></h1>
+    <p class="hero-body">From DTLA to Bali and back. Plus Hong Kong, Beijing, Prague, Helsinki, London, Costa Rica, Singapore, and a few places in between. I write about travel the same way I talk about it — honestly, practically, and with strong opinions about where to eat.</p>
+    <div class="hero-meta">
+      <div><span class="hero-stat-num">20+</span><span class="hero-stat-lbl">Countries visited</span></div>
+      <div><span class="hero-stat-num">1 year</span><span class="hero-stat-lbl">Living in Bali</span></div>
+      <div><span class="hero-stat-num">40+</span><span class="hero-stat-lbl">Posts written</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- CHAPTER NAV -->
+<div class="chapter-nav">
+  <a class="chapter-link" href="#bali">Bali</a>
+  <a class="chapter-link" href="#previous-adventures">Previous Adventures</a>
+  <a class="chapter-link" href="#press">Press</a>
+</div>
+
+<!-- BALI -->
+<section class="chapter" id="bali">
+  <div class="chapter-header">
+    <span class="chapter-label">2015 – 2017</span>
+    <h2 class="chapter-title">Bali, Indonesia — <em>The Year I Left DTLA</em></h2>
+    <p class="chapter-intro">In late 2015 I sold everything that wouldn't fit in a carry-on, rented out my loft, and moved to Bali for a year. This is what happened.</p>
+  </div>
+  <div class="post-grid">
+    <a class="post-card" href="posts/why-bali.html">
+      <span class="post-card-cat">The Decision</span>
+      <div class="post-card-title">Why Bali???</div>
+      <div class="post-card-date">November 12, 2015</div>
+      <p class="post-card-excerpt">My very pragmatic father pointed out I was losing $6,500 a month by living in my own loft. The math led me somewhere I never expected.</p>
+    </a>
+    <a class="post-card" href="posts/why-bali-part-2.html">
+      <span class="post-card-cat">The Decision</span>
+      <div class="post-card-title">Why Bali, Part 2</div>
+      <div class="post-card-date">November 12, 2015</div>
+      <p class="post-card-excerpt">Vietnam, Cambodia, Thailand, or Bali? Facebook Graph Search, a strong dollar, and a very helpful friend in Bangkok made the decision.</p>
+    </a>
+    <a class="post-card" href="posts/arent-you-going-to-be-lonely.html">
+      <span class="post-card-cat">The Decision</span>
+      <div class="post-card-title">Aren't You Going To Be Lonely?</div>
+      <div class="post-card-date">November 12, 2015</div>
+      <p class="post-card-excerpt">The short answer is yes. The long answer is, who the hell knows? I make friends quickly. That's my data.</p>
+    </a>
+    <a class="post-card" href="posts/if-this-is-so-easy.html">
+      <span class="post-card-cat">The Decision</span>
+      <div class="post-card-title">If This Is So Easy, Why Isn't Everyone Doing It?</div>
+      <div class="post-card-date">November 20, 2015</div>
+      <p class="post-card-excerpt">Great question. Because most people have relationships, children, and mortgages. I have none of those. So I went.</p>
+    </a>
+    <a class="post-card" href="posts/how-to-make-money.html">
+      <span class="post-card-cat">Logistics</span>
+      <div class="post-card-title">How Are You Going To Make Money?</div>
+      <div class="post-card-date">December 13, 2015</div>
+      <p class="post-card-excerpt">Working on the ground is illegal for foreigners. Good thing I'm a digital nomad. Also: I just bought a one-way ticket. Shit just got real.</p>
+    </a>
+    <a class="post-card" href="posts/30-days-away.html">
+      <span class="post-card-cat">Pre-Departure</span>
+      <div class="post-card-title">30 Days Away... And Things Are Not Going As Planned...</div>
+      <div class="post-card-date">December 28, 2015</div>
+      <p class="post-card-excerpt">My loft isn't rented and my HELOC isn't done. If anyone wants a beautiful DTLA loft for $5,995/month, call me.</p>
+    </a>
+    <a class="post-card" href="posts/loft-is-leased.html">
+      <span class="post-card-cat">Pre-Departure</span>
+      <div class="post-card-title">The Loft is Leased, and I Leave in 13 Days!!!</div>
+      <div class="post-card-date">January 15, 2016</div>
+      <p class="post-card-excerpt">$5,250/month for 16 months. Not as high as I wanted. But the adventure is a go. Now I have to sell everything I own in a week.</p>
+    </a>
+    <a class="post-card" href="posts/move-out-4-days.html">
+      <span class="post-card-cat">Pre-Departure</span>
+      <div class="post-card-title">Holy Crap! I Move Out in 4 Days!</div>
+      <div class="post-card-date">January 23, 2016</div>
+      <p class="post-card-excerpt">The panic and the relief are arriving in waves. Soon I will own only what's in a single carry-on, a few blocks from the beach.</p>
+    </a>
+    <a class="post-card" href="posts/holy-cow.html">
+      <span class="post-card-cat">Arrival</span>
+      <div class="post-card-title">Holy Cow!! Literally, Holy Cow!!</div>
+      <div class="post-card-date">January 31, 2016</div>
+      <p class="post-card-excerpt">14.5 hours to Taipei, 6 more to Bali. Cows in the street. Mopeds everywhere. The villa is perfect. I live here now.</p>
+    </a>
+    <a class="post-card" href="posts/making-friends.html">
+      <span class="post-card-cat">Life There</span>
+      <div class="post-card-title">Making Friends in Bali is Stupid Easy</div>
+      <div class="post-card-date">February 3, 2016</div>
+      <p class="post-card-excerpt">Day three and I already know a dozen people. Bali Dinner Club is in the works. Massages are $7. Life is good.</p>
+    </a>
+    <a class="post-card" href="posts/monkeys-temples.html">
+      <span class="post-card-cat">Exploring</span>
+      <div class="post-card-title">Monkeys and Temples and Midnight Motorcycle Chases!</div>
+      <div class="post-card-date">February 9, 2016</div>
+      <p class="post-card-excerpt">Ubud, rice paddies, the Sacred Monkey Forest, Kopi Luwak coffee, and a temple older than any building in the US.</p>
+    </a>
+    <a class="post-card" href="posts/gili-islands.html">
+      <span class="post-card-cat">Exploring</span>
+      <div class="post-card-title">Dojo BBQ, The Gili Islands, And A Turtle</div>
+      <div class="post-card-date">February 15, 2016</div>
+      <p class="post-card-excerpt">Three sea turtles. Crystal turquoise water. A 40-person BBQ that nobody planned. The expat life in full effect.</p>
+    </a>
+    <a class="post-card" href="posts/balinese-dancing.html">
+      <span class="post-card-cat">Dinner Club</span>
+      <div class="post-card-title">Balinese Dancing and Dinner Club Number One</div>
+      <div class="post-card-date">February 26, 2016</div>
+      <p class="post-card-excerpt">A Kecak fire dance at sunset over the Indian Ocean, then 22 people from 11 countries at Dinner Club Number One in Bali.</p>
+    </a>
+    <a class="post-card" href="posts/22-things.html">
+      <span class="post-card-cat">Life There</span>
+      <div class="post-card-title">22 Things I Learned in My First 30 Days in Bali</div>
+      <div class="post-card-date">March 12, 2016</div>
+      <p class="post-card-excerpt">One month in. The real education begins. Warung food, temple offerings, the ATM game, and why you should always say yes.</p>
+    </a>
+    <a class="post-card" href="posts/how-to-live-like-a-king.html">
+      <span class="post-card-cat">Money</span>
+      <div class="post-card-title">How to Live Like A King For $1,500 A Month</div>
+      <div class="post-card-date">April 20, 2016</div>
+      <p class="post-card-excerpt">Three months in, the budget is dialed. Villa with a pool: $500. All meals out: $200. Massages, beers, Uber: $250. Total: stunning.</p>
+    </a>
+    <a class="post-card" href="posts/transfer-money.html">
+      <span class="post-card-cat">Money</span>
+      <div class="post-card-title">Transfer Money Without Getting SCREWED!</div>
+      <div class="post-card-date">May 12, 2016</div>
+      <p class="post-card-excerpt">Your bank will murder you on exchange rates. Use Wise (formerly Transferwise). Use BCA ATMs. Never accept currency conversion at the machine.</p>
+    </a>
+    <a class="post-card" href="posts/happy-hours-canggu.html">
+      <span class="post-card-cat">Local Tips</span>
+      <div class="post-card-title">The Ultimate Guide to Happy Hours in Canggu</div>
+      <div class="post-card-date">June 4, 2016</div>
+      <p class="post-card-excerpt">Six months of research. Old Man's, Dojo, Betelnut, Finns, and the real answer: a $1.50 Bintang at sunset on Batu Bolong beach.</p>
+    </a>
+    <a class="post-card" href="posts/singapore.html">
+      <span class="post-card-cat">Side Trips</span>
+      <div class="post-card-title">6 Tips For Saving Thousands In Singapore</div>
+      <div class="post-card-date">June 19, 2016</div>
+      <p class="post-card-excerpt">The visa run forced me to Singapore. The hawker centers, Little India guesthouses, and the MRT made me want to stay longer.</p>
+    </a>
+    <a class="post-card" href="posts/top-10-reasons.html">
+      <span class="post-card-cat">Life There</span>
+      <div class="post-card-title">Top 10 Reasons to Move to Bali</div>
+      <div class="post-card-date">July 14, 2016</div>
+      <p class="post-card-excerpt">Seven months in, here are the ten things that made this the best decision I've ever made. Number 10 is the most important.</p>
+    </a>
+    <a class="post-card" href="posts/7-life-hacks.html">
+      <span class="post-card-cat">Local Tips</span>
+      <div class="post-card-title">7 Essential Life Hacks For Your First Trip To Bali</div>
+      <div class="post-card-date">August 2, 2016</div>
+      <p class="post-card-excerpt">Get Grab before you land. Get a SIM at the airport. Bring USD. Don't touch the offerings. Say yes to things that scare you slightly.</p>
+    </a>
+    <a class="post-card" href="posts/cooking-classes.html">
+      <span class="post-card-cat">Exploring</span>
+      <div class="post-card-title">Cooking Classes at The Amala Resort</div>
+      <div class="post-card-date">September 5, 2016</div>
+      <p class="post-card-excerpt">7am at a local market, then learning to pound base gede by hand. The real Balinese cuisine has nothing to do with what you've had at home.</p>
+    </a>
+    <a class="post-card" href="posts/visa-nightmare.html">
+      <span class="post-card-cat">Side Trips</span>
+      <div class="post-card-title">144 Hour Chinese Transit Visa Nightmare</div>
+      <div class="post-card-date">October 17, 2016</div>
+      <p class="post-card-excerpt">China has a policy that lets you visit for free disguised as a layover. The airline had no idea. I had the printed policy. We were at the desk for 45 minutes.</p>
+    </a>
+    <a class="post-card" href="posts/co-working-dtla.html">
+      <span class="post-card-cat">Back in DTLA</span>
+      <div class="post-card-title">The Best Co-Working Space in DTLA You've Never Heard Of</div>
+      <div class="post-card-date">April 3, 2018</div>
+      <p class="post-card-excerpt">A year later, I came back. The loft was mine again, the loan was paid off, and I needed to find the DTLA version of Dojo Bali.</p>
+    </a>
+  </div>
+</section>
+
+<!-- PREVIOUS ADVENTURES -->
+<section class="chapter" id="previous-adventures">
+  <div class="chapter-header">
+    <span class="chapter-label">2008 – 2012</span>
+    <h2 class="chapter-title">Previous Adventures</h2>
+    <p class="chapter-intro">Before Bali, I traveled alone. Hong Kong became my favorite city in the world. Beijing with a local guide. Prague and Helsinki in winter. Costa Rica with friends. The blog posts from these trips still live on the old site — full migration coming soon.</p>
+  </div>
+  <div class="prev-adv-grid">
+    <div class="adv-chapter-card">
+      <span class="adv-chapter-emoji">🇭🇰</span>
+      <div class="adv-chapter-name">Hong Kong</div>
+      <div class="adv-chapter-sub">Plus Shenzhen & Macao · March 2008</div>
+      <p style="font-size:13px;color:var(--text-mid);line-height:1.6;">Supposed to be a few days. Turned into two weeks thanks to two incredible hosts. Hong Kong became my favorite city in the world outside of DTLA.</p>
+      <ul class="adv-chapter-posts" style="margin-top:1rem;">
+        <li><a href="https://www.joshgray-emmer.com/josh-gray-emmer/2012/02/01/hong-kong-night-one" target="_blank">Hong Kong Night One</a></li>
+        <li><a href="https://www.joshgray-emmer.com/josh-gray-emmer/2012/02/01/hong-kong-day-one" target="_blank">Hong Kong Day One</a></li>
+        <li><a href="https://www.joshgray-emmer.com/josh-gray-emmer/2012/02/04/hong-kong-day-seven" target="_blank">Hong Kong Day Seven</a></li>
+        <li><a href="https://www.joshgray-emmer.com/josh-gray-emmer/2012/02/04/hong-kong-day-eleven-macao-day-one" target="_blank">Hong Kong Day 11 / Macao Day One</a></li>
+        <li><a href="https://www.joshgray-emmer.com/josh-gray-emmer/2012/02/04/hong-kong-day-thirteen" target="_blank">Hong Kong Day Thirteen</a></li>
+      </ul>
+    </div>
+    <div class="adv-chapter-card">
+      <span class="adv-chapter-emoji">🇨🇳</span>
+      <div class="adv-chapter-name">Beijing</div>
+      <div class="adv-chapter-sub">November 2011</div>
+      <p style="font-size:13px;color:var(--text-mid);line-height:1.6;">Beijing with ChinaMax — a local guide who showed me a city completely different from the tourist version. The Forbidden City, the Great Wall, and hutong alleyways.</p>
+      <ul class="adv-chapter-posts" style="margin-top:1rem;">
+        <li><a href="https://www.joshgray-emmer.com/josh-gray-emmer/2011/11/14/welcome-to-beijing" target="_blank">Welcome to Beijing!</a></li>
+        <li><a href="https://www.joshgray-emmer.com/josh-gray-emmer/2011/11/16/beijing-days-2-and-3" target="_blank">Beijing Days 2 and 3</a></li>
+        <li><a href="https://www.joshgray-emmer.com/josh-gray-emmer/2011/11/18/beijing-day-4" target="_blank">Beijing Day 4</a></li>
+        <li><a href="https://www.joshgray-emmer.com/josh-gray-emmer/2012/02/04/beijing-day-five" target="_blank">Beijing Day Five</a></li>
+        <li><a href="https://www.joshgray-emmer.com/josh-gray-emmer/2012/02/04/beijing-days-six-seven" target="_blank">Beijing Days Six & Seven</a></li>
+      </ul>
+    </div>
+    <div class="adv-chapter-card">
+      <span class="adv-chapter-emoji">🇪🇺</span>
+      <div class="adv-chapter-name">Europe</div>
+      <div class="adv-chapter-sub">London, Prague, Helsinki · 2008 & 2012</div>
+      <p style="font-size:13px;color:var(--text-mid);line-height:1.6;">Solo through three cities. London as a launching pad. Prague in spring — one of the most beautiful cities I've ever seen. Helsinki in a way no guidebook describes.</p>
+      <ul class="adv-chapter-posts" style="margin-top:1rem;">
+        <li><a href="https://www.joshgray-emmer.com/josh-gray-emmer/2012/02/04/london-day-one" target="_blank">London Day One</a></li>
+        <li><a href="https://www.joshgray-emmer.com/josh-gray-emmer/2012/02/04/prague-days-one-two" target="_blank">Prague Days One & Two</a></li>
+        <li><a href="https://www.joshgray-emmer.com/josh-gray-emmer/2012/02/04/helsinki-day-one" target="_blank">Helsinki Day One</a></li>
+        <li><a href="https://www.joshgray-emmer.com/josh-gray-emmer/2012/02/04/prague-days-five-six" target="_blank">Prague Days Five & Six</a></li>
+      </ul>
+    </div>
+    <div class="adv-chapter-card">
+      <span class="adv-chapter-emoji">🇨🇷</span>
+      <div class="adv-chapter-name">Costa Rica</div>
+      <div class="adv-chapter-sub">January 2012</div>
+      <p style="font-size:13px;color:var(--text-mid);line-height:1.6;">The one adventure I didn't take alone. Seven days, rainforests, beaches, and the realization that I'd been missing out on Central America my whole life.</p>
+      <ul class="adv-chapter-posts" style="margin-top:1rem;">
+        <li><a href="https://www.joshgray-emmer.com/josh-gray-emmer/2012/02/01/costa-rica-day-one" target="_blank">Costa Rica Day One</a></li>
+        <li><a href="https://www.joshgray-emmer.com/josh-gray-emmer/2012/02/01/costa-rica-day-three" target="_blank">Costa Rica Day Three</a></li>
+        <li><a href="https://www.joshgray-emmer.com/josh-gray-emmer/2012/02/01/costa-rica-day-five" target="_blank">Costa Rica Day Five</a></li>
+        <li><a href="https://www.joshgray-emmer.com/josh-gray-emmer/2012/02/01/costa-rica-day-seven" target="_blank">Costa Rica Day Seven</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PRESS -->
+<section class="chapter" id="press">
+  <div class="chapter-header">
+    <span class="chapter-label">Press</span>
+    <h2 class="chapter-title">In The News</h2>
+    <p class="chapter-intro">A few articles, mentions, and write-ups over the years. Spring Street Park, maps at art walk, the resident card, and a 13-year-old at Sundance.</p>
+  </div>
+  <div class="press-grid">
+    <a class="press-item" href="http://www.ladowntownnews.com/community/what-s-in-my-loft-josh-gray-emmer-el-dorado/article_73986024-f892-11e2-b1c3-001a4bcf887a.html" target="_blank">
+      <span class="press-arrow">→</span>
+      <span class="press-label">What's in My Loft?: Josh Gray-Emmer, El Dorado Lofts — <em>LA Downtown News</em></span>
+    </a>
+    <a class="press-item" href="http://www.latimes.com/sports/lakers/la-hm-rooftop16jun16-story.html" target="_blank">
+      <span class="press-arrow">→</span>
+      <span class="press-label">Those playgrounds in the sky — <em>Los Angeles Times</em></span>
+    </a>
+    <a class="press-item" href="http://www.nbclosangeles.com/the-scene/shopping/DTLA-Resident-Card-93712804.html" target="_blank">
+      <span class="press-arrow">→</span>
+      <span class="press-label">Downtowners Get Photo ID Cards for Local Discounts — <em>NBC Los Angeles</em></span>
+    </a>
+    <a class="press-item" href="http://la.curbed.com/archives/2012/08/spring_street_park_the_movie_1.php" target="_blank">
+      <span class="press-arrow">→</span>
+      <span class="press-label">Spring Street Park: The Movie — <em>Curbed LA</em></span>
+    </a>
+    <a class="press-item" href="http://www.ladowntownnews.com/news/spring-street-park-to-open-in-june/article_faec0b78-b83e-11e2-90f1-001a4bcf887a.html" target="_blank">
+      <span class="press-arrow">→</span>
+      <span class="press-label">Spring Street Park to Open in June — <em>LA Downtown News</em></span>
+    </a>
+    <a class="press-item" href="http://la.curbed.com/archives/2012/09/pedestrian_unfriendliness_on_la_brea_old_la_maps_at_art_walk.php" target="_blank">
+      <span class="press-arrow">→</span>
+      <span class="press-label">Old LA Maps at Art Walk — <em>Curbed LA</em></span>
+    </a>
+    <a class="press-item" href="http://la.curbed.com/archives/2011/08/old_bank_district_banding_together_to_keep_up_the_spring_st_park.php" target="_blank">
+      <span class="press-arrow">→</span>
+      <span class="press-label">Old Bank District: Keeping Up Spring St. Park — <em>Curbed LA</em></span>
+    </a>
+    <a class="press-item" href="http://latimesblogs.latimes.com/lanow/2010/05/downtown-locals-in-search-of-discounts-at-their-favorite-neighborhood-spots-can-now-get-a-downtown-la-resident-card-appare.html" target="_blank">
+      <span class="press-arrow">→</span>
+      <span class="press-label">Discounts on tap for Downtown LA residents — <em>Los Angeles Times</em></span>
+    </a>
+    <a class="press-item" href="http://articles.latimes.com/1995-01-28/local/me-25368_1_film-festival" target="_blank">
+      <span class="press-arrow">→</span>
+      <span class="press-label">Student Filmmakers Get Hands-On Education at Sundance — <em>Los Angeles Times</em></span>
+    </a>
+    <a class="press-item" href="http://brighamyen.com/2012/08/13/birth-of-an-urban-park-by-josh-gray-emmer/" target="_blank">
+      <span class="press-arrow">→</span>
+      <span class="press-label">Birth of an Urban Park in Downtown LA — <em>Brigham Yen</em></span>
+    </a>
+    <a class="press-item" href="http://www.ladowntownnews.com/news/dodgers-to-host-downtown-night/article_ae9b1885-6ad9-548b-8c12-43acb2741a74.html" target="_blank">
+      <span class="press-arrow">→</span>
+      <span class="press-label">Dodgers to Host Downtown Night — <em>LA Downtown News</em></span>
+    </a>
+    <a class="press-item" href="http://articles.latimes.com/2011/mar/20/business/la-fi-0320-cover-downtown-clubs-20110320/2" target="_blank">
+      <span class="press-arrow">→</span>
+      <span class="press-label">Changing tradition — <em>Los Angeles Times</em></span>
+    </a>
+    <a class="press-item" href="http://www.ladowntownnews.com/news/under-pressure-from-huizar-bid-taps-new-director/article_11c25534-fb47-11e0-9898-001cc4c03286.html" target="_blank">
+      <span class="press-arrow">→</span>
+      <span class="press-label">Under Pressure From Huizar, BID Taps New Director — <em>LA Downtown News</em></span>
+    </a>
+    <a class="press-item" href="http://www.nbclosangeles.com/the-scene/events/DowntownRAW__Guns_And_Booze_To_Attract_Loft_Buyers_Los_Angeles.html" target="_blank">
+      <span class="press-arrow">→</span>
+      <span class="press-label">Guns, Booze to Attract Loft Renters — <em>NBC Los Angeles</em></span>
+    </a>
+    <a class="press-item" href="http://laist.com/2010/03/01/foyers_guns_and_honeys_factory_arts.php" target="_blank">
+      <span class="press-arrow">→</span>
+      <span class="press-label">Factory Place Arts Complex Opening — <em>LAist</em></span>
+    </a>
+    <a class="press-item" href="http://www.prweb.com/releases/2010/02/prweb3589414.htm" target="_blank">
+      <span class="press-arrow">→</span>
+      <span class="press-label">Factory Place Lofts Open With a Bang — <em>PR Web</em></span>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <p>© Josh Gray-Emmer · <a href="../index.html">joshgray-emmer.netlify.app</a></p>
+</footer>
+
+</body>
+</html>
